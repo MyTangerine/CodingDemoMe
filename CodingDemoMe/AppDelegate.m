@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "SignInViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +16,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    
+    SignInViewController *sign = [[SignInViewController alloc]init];
+    ;
+    self.window.rootViewController = sign;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

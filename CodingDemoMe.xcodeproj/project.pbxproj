@@ -16,6 +16,8 @@
 		2850BD9A1CC714D8008A11BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2850BD981CC714D8008A11BC /* LaunchScreen.storyboard */; };
 		2850BDA51CC714D8008A11BC /* CodingDemoMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850BDA41CC714D8008A11BC /* CodingDemoMeTests.m */; };
 		2850BDB01CC714D8008A11BC /* CodingDemoMeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850BDAF1CC714D8008A11BC /* CodingDemoMeUITests.m */; };
+		2850BDC01CC714FD008A11BC /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850BDBE1CC714FD008A11BC /* SignInViewController.m */; };
+		2850BDC11CC714FD008A11BC /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2850BDBF1CC714FD008A11BC /* SignInViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,9 @@
 		2850BDAB1CC714D8008A11BC /* CodingDemoMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodingDemoMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2850BDAF1CC714D8008A11BC /* CodingDemoMeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CodingDemoMeUITests.m; sourceTree = "<group>"; };
 		2850BDB11CC714D8008A11BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2850BDBD1CC714FD008A11BC /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignInViewController.h; path = ../SignInViewController.h; sourceTree = "<group>"; };
+		2850BDBE1CC714FD008A11BC /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignInViewController.m; path = ../SignInViewController.m; sourceTree = "<group>"; };
+		2850BDBF1CC714FD008A11BC /* SignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignInViewController.xib; path = ../SignInViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +125,9 @@
 		2850BD871CC714D8008A11BC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2850BDBD1CC714FD008A11BC /* SignInViewController.h */,
+				2850BDBE1CC714FD008A11BC /* SignInViewController.m */,
+				2850BDBF1CC714FD008A11BC /* SignInViewController.xib */,
 				2850BD881CC714D8008A11BC /* main.m */,
 			);
 			name = "Supporting Files";
@@ -249,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2850BDC11CC714FD008A11BC /* SignInViewController.xib in Resources */,
 				2850BD9A1CC714D8008A11BC /* LaunchScreen.storyboard in Resources */,
 				2850BD971CC714D8008A11BC /* Assets.xcassets in Resources */,
 				2850BD921CC714D8008A11BC /* Main.storyboard in Resources */,
@@ -276,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2850BDC01CC714FD008A11BC /* SignInViewController.m in Sources */,
 				2850BD951CC714D8008A11BC /* CodingDemoMe.xcdatamodeld in Sources */,
 				2850BD8F1CC714D8008A11BC /* ViewController.m in Sources */,
 				2850BD8C1CC714D8008A11BC /* AppDelegate.m in Sources */,
@@ -503,6 +513,7 @@
 				2850BDB61CC714D8008A11BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2850BDB71CC714D8008A11BC /* Build configuration list for PBXNativeTarget "CodingDemoMeTests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +522,7 @@
 				2850BDB91CC714D8008A11BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2850BDBA1CC714D8008A11BC /* Build configuration list for PBXNativeTarget "CodingDemoMeUITests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +531,7 @@
 				2850BDBC1CC714D8008A11BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
