@@ -18,6 +18,8 @@
 		2850BDB01CC714D8008A11BC /* CodingDemoMeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850BDAF1CC714D8008A11BC /* CodingDemoMeUITests.m */; };
 		2850BDC01CC714FD008A11BC /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850BDBE1CC714FD008A11BC /* SignInViewController.m */; };
 		2850BDC11CC714FD008A11BC /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2850BDBF1CC714FD008A11BC /* SignInViewController.xib */; };
+		28CFEA721CCB864A002B4289 /* MainNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28CFEA701CCB864A002B4289 /* MainNewsViewController.m */; };
+		28CFEA731CCB864A002B4289 /* MainNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28CFEA711CCB864A002B4289 /* MainNewsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,9 @@
 		2850BDBD1CC714FD008A11BC /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignInViewController.h; path = ../SignInViewController.h; sourceTree = "<group>"; };
 		2850BDBE1CC714FD008A11BC /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignInViewController.m; path = ../SignInViewController.m; sourceTree = "<group>"; };
 		2850BDBF1CC714FD008A11BC /* SignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignInViewController.xib; path = ../SignInViewController.xib; sourceTree = "<group>"; };
+		28CFEA6F1CCB864A002B4289 /* MainNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNewsViewController.h; sourceTree = "<group>"; };
+		28CFEA701CCB864A002B4289 /* MainNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNewsViewController.m; sourceTree = "<group>"; };
+		28CFEA711CCB864A002B4289 /* MainNewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainNewsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +133,9 @@
 				2850BDBD1CC714FD008A11BC /* SignInViewController.h */,
 				2850BDBE1CC714FD008A11BC /* SignInViewController.m */,
 				2850BDBF1CC714FD008A11BC /* SignInViewController.xib */,
+				28CFEA6F1CCB864A002B4289 /* MainNewsViewController.h */,
+				28CFEA701CCB864A002B4289 /* MainNewsViewController.m */,
+				28CFEA711CCB864A002B4289 /* MainNewsViewController.xib */,
 				2850BD881CC714D8008A11BC /* main.m */,
 			);
 			name = "Supporting Files";
@@ -257,6 +265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28CFEA731CCB864A002B4289 /* MainNewsViewController.xib in Resources */,
 				2850BDC11CC714FD008A11BC /* SignInViewController.xib in Resources */,
 				2850BD9A1CC714D8008A11BC /* LaunchScreen.storyboard in Resources */,
 				2850BD971CC714D8008A11BC /* Assets.xcassets in Resources */,
@@ -285,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28CFEA721CCB864A002B4289 /* MainNewsViewController.m in Sources */,
 				2850BDC01CC714FD008A11BC /* SignInViewController.m in Sources */,
 				2850BD951CC714D8008A11BC /* CodingDemoMe.xcdatamodeld in Sources */,
 				2850BD8F1CC714D8008A11BC /* ViewController.m in Sources */,
@@ -430,6 +440,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = CodingDemoMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pig.CodingDemoMe;
@@ -441,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = CodingDemoMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pig.CodingDemoMe;
