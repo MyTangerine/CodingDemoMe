@@ -7,7 +7,8 @@
 //
 
 #import "SignInViewController.h"
-
+#import "AppDelegate.h"
+#import "MainViewController.h"
 @interface SignInViewController ()<UITextFieldDelegate>
 @property (weak,nonatomic)UIView *cardView;
 @property (weak,nonatomic)UIView *headView;
@@ -17,38 +18,28 @@
 
 @implementation SignInViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
+    
+    
     /**
-            设置底层背景图片
+     设置底层背景图片
      */
     UIImageView *self_imageview = [[UIImageView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-//    self_imageview.image = [UIImage imageNamed:@"image_card"];
-    
+    //    self_imageview.image = [UIImage imageNamed:@"image_card"];
     [self.view addSubview:self_imageview];
-    
     [self.view setBackgroundColor:[UIColor greenColor]];
-    
-    
-    
-   
-    
-    
-    /** 
-            添加两个UIView
+    /**
+     添加两个UIView
      */
-    
-    
-    
     UIView * login_view_card = [[UIView alloc]initWithFrame:CGRectMake(30, 200, 320, 300)];
     [login_view_card setBackgroundColor:[UIColor clearColor]];
-  
-    
     UIView *login_view_head = [[UIView alloc]initWithFrame:CGRectMake(150, 160, 80, 80)];
     [login_view_head setBackgroundColor:[UIColor clearColor]];
-    
-    
     
     self.cardView = login_view_card;
     self.headView = login_view_head;
@@ -61,27 +52,16 @@
     login_view_card.layer.cornerRadius = 15;
     login_view_card.layer.masksToBounds = YES;//设置圆角
     
-    
     /**
-             设置卡片的图片
+     设置卡片的样式
      */
+    
     UIImageView * imageview_card = [[UIImageView alloc]initWithFrame:login_view_card.bounds];
-//    imageview_card.image = [UIImage imageNamed:@"image_head"];
-    
-//    login_view_card.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
-    
-//    login_view_card.layer.shadowColor = [UIColor blackColor].CGColor;
-    
-    
     [imageview_card setBackgroundColor:[UIColor whiteColor]];
-    
     [login_view_card addSubview:imageview_card];
     
-    
-    
-    
     /**
-            绘制uiview卡片的图形样式
+     绘制uiview卡片的图形样式
      */
     UIBezierPath *uiview_card_path = [[UIBezierPath alloc]init];
     [uiview_card_path moveToPoint:CGPointMake(0, 0)];
@@ -95,38 +75,24 @@
     shape_uiview_card.path = uiview_card_path.CGPath;
     login_view_card.layer.mask = shape_uiview_card;
     
-/********************************************************************/
-    
-   
     /**
-        设置圆形头像
+     设置圆形头像
      */
-    
-    
-    
     
     UIImageView *imageview_head = [[UIImageView alloc]initWithFrame:login_view_head.bounds];
     imageview_head.image = [UIImage imageNamed:@"image_head"];
     [login_view_head addSubview:imageview_head];
     
-    
-
-    
     UIBezierPath *head_path = [[UIBezierPath alloc]init];
-    
-    
-    
     [head_path addArcWithCenter:CGPointMake(40, 40) radius:40 startAngle:0 endAngle:2*M_PI clockwise:YES];
     CAShapeLayer *head_layer = [CAShapeLayer layer];
     head_layer.path  = head_path.CGPath;
     imageview_head.layer.mask = head_layer;
     
-    
-    
-    
     /**
-            设置 登陆 注册事件 按钮
+     设置 登陆 注册事件 按钮
      */
+    
     UIButton *btn_login = [[UIButton alloc]initWithFrame:CGRectMake(40, 205, 250,35 )];
     [btn_login setBackgroundColor:[UIColor colorWithRed:50/255.0f green:205/255.0f blue:50/255.0f alpha:1.0f]];
     [btn_login setTitle:@"登陆" forState:UIControlStateNormal];
@@ -135,9 +101,14 @@
     [btn_regist setBackgroundColor:[UIColor colorWithRed:50/255.0f green:205/255.0f blue:50/255.0f alpha:1.0f]];
     [btn_regist setTitle:@"注册" forState:UIControlStateNormal];
     [login_view_card addSubview:btn_regist];
+    /************************注册事件*************************************/
+    
     
     [btn_login addTarget:self action:@selector(beginAnimationWithLogInCard) forControlEvents:UIControlEventTouchUpInside];
+    //    [btn_login addTarget:self action:@selector(SignInPost) forControlEvents:UIControlEventTouchUpInside];
     
+    //    [btn_login addTarget:self action:@selector(changeToMainNewsView) forControlEvents:UIControlEventTouchUpInside];
+    /*******************************************************************/
     btn_regist .layer.cornerRadius = 15;
     btn_regist.layer.masksToBounds = YES;
     
@@ -145,7 +116,7 @@
     btn_login.layer.masksToBounds = YES;
     
     /**
-            设置 文本
+     设置 文本
      */
     UILabel *label_user = [[UILabel alloc]initWithFrame:CGRectMake(10, 60, 70, 35)];
     [label_user setText:@"账户"];
@@ -155,7 +126,7 @@
     [login_view_card addSubview:label_password];
     
     /**
-            设置 输入框
+     设置 输入框
      */
     UITextField *text_user = [[UITextField alloc]initWithFrame:CGRectMake(70, 60, 230, 35)];
     text_user.placeholder = @"请输入帐号";
@@ -168,14 +139,22 @@
     text_user.clearButtonMode = UITextFieldViewModeWhileEditing;
     text_password.clearButtonMode = UITextFieldViewModeWhileEditing;
     
-    [text_user addTarget:self action:@selector(backgroundTab) forControlEvents:UIControlEventEditingDidEndOnExit];
-    [text_password addTarget:self action:@selector(backgroundTab) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [text_user addTarget:self action:@selector(textFieldDoneEditing) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [text_password addTarget:self action:@selector(textFieldDoneEditing) forControlEvents:UIControlEventEditingDidEndOnExit];
     
     text_password.returnKeyType = UIReturnKeyDone;
     text_user.returnKeyType = UIReturnKeyDone;
     
     text_user.keyboardType  = UIKeyboardTypeASCIICapable;
     text_password.keyboardType  = UIKeyboardTypeASCIICapable;
+    /*  UITextField 的阴影效果
+     UIBezierPath *text_shadow_path = [UIBezierPath bezierPathWithRect:text_user.bounds];
+     text_user.layer.masksToBounds = NO;
+     text_user.layer.shadowColor = [UIColor blackColor].CGColor;
+     text_user.layer.shadowOffset = CGSizeMake(0.0f, 0.5f);
+     text_user.layer.shadowOpacity = 0.5f;
+     text_user.layer.shadowPath = text_shadow_path.CGPath;
+     */
     
     text_password.secureTextEntry = YES;
     self.useremail = text_user;
@@ -188,13 +167,17 @@
 }
 
 /**
-            UIButton 注册 设置 动画
+ UIButton 注册事件 设置 动画
  */
 
+-(void)changeToMainNewsView{
+    MainViewController *main_view = [[MainViewController alloc]init];
+    [self presentViewController:main_view animated:YES completion:nil];
+}
 
 -(void)beginAnimationWithLogInCard{
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:1.5];
+    
+    [UIView animateWithDuration:1.5f animations:^{
         CGPoint point_head = self.headView.center;
         CGPoint point_card = self.cardView.center;
         point_head.y +=100;
@@ -204,36 +187,72 @@
         [self.cardView setAlpha:alpha];
         [self.headView setCenter:point_head];
         [self.cardView setCenter:point_card];
+    }completion:^(BOOL finished){
+        
+        [self changeToMainNewsView];
+    }];
     
-    [UIView commitAnimations];
+    
+    
+    
+    
+    
+    
+    
+    //    [UIView beginAnimations:nil context:nil];
+    //    [UIView setAnimationDuration:1.5];
+    //        CGPoint point_head = self.headView.center;
+    //        CGPoint point_card = self.cardView.center;
+    //        point_head.y +=100;
+    //        point_card.y +=150;
+    //        CGFloat alpha = self.cardView.alpha;
+    //        alpha -=1.0f;
+    //        [self.cardView setAlpha:alpha];
+    //        [self.headView setCenter:point_head];
+    //        [self.cardView setCenter:point_card];
+    //
+    //    [UIView commitAnimations];
+    //
+    //        [self changeToMainNewsView];
+    //
     
 }
 
 
--(void)backgroundTab{
+-(void)textFieldDoneEditing{
     [self.useremail resignFirstResponder];
     [self.userpassword resignFirstResponder];
 }
 
 
 -(void)SignInPost{
+    
     /*
      https://coding.net/api/account/login?email=liuyizhou691601028%40vip.qq.com&password=liuyizhou6864648
+     https://coding.net/api/getCaptcha
+     
      */
-    
     NSRange range_user_email= [self.useremail.text rangeOfString:@"@"];
-    NSLog(@"%@",NSStringFromRange(range_user_email));
+    NSUInteger a = range_user_email.location;
+    NSUInteger b = range_user_email.location +1;
+    NSString *email1 = [self.useremail.text substringToIndex:a];
+    NSString *email2 = @"%40";
+    NSString *email3 = [self.useremail.text substringFromIndex:b];
     
-//    NSString *post_login_url = [[NSString alloc]initWithFormat:@" https://coding.net/api/account/login?email=%@&password=%@",];
+    NSString *password = self.userpassword.text;
+    
+    NSString *post_login_url_str = [[NSString alloc]initWithFormat:@"https://coding.net/v2/api/account/login?email=%@%@%@&password=%@",email1,email2,email3,password];
+    
+    NSURL *post_login_url = [[NSURL alloc]initWithString:post_login_url_str];
+    NSMutableURLRequest *post_login_request = [[NSMutableURLRequest alloc]initWithURL:post_login_url cachePolicy:1 timeoutInterval:15.0f];
+    [post_login_request setHTTPMethod:@"POST"];
+    
+    NSData *callback_data = [NSURLConnection sendSynchronousRequest:post_login_request returningResponse:nil error:nil];
+    
+    
+    callback_data = [NSJSONSerialization JSONObjectWithData:callback_data options:NSJSONReadingMutableContainers error:nil];
+    NSLog(@"%@",callback_data);
+    
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

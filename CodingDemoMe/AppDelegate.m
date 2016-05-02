@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "SignInViewController.h"
+
+
 @interface AppDelegate ()
 
 @end
@@ -16,13 +18,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    SignInViewController *main_view = [[SignInViewController alloc]init];
     
-    SignInViewController *sign = [[SignInViewController alloc]init];
-    ;
-    self.window.rootViewController = sign;
+    self.window.rootViewController = main_view;
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
