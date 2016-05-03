@@ -19,14 +19,7 @@
 
 
 //cell 可重用性
-+(instancetype)NewsCellCellWithTableView:(UITableView *)tableView{
-    static NSString *reuseId = @"reuseCellId";
-    UITableViewCellViewController *cell = [tableView dequeueReusableCellWithIdentifier:reuseId];
-    if (cell == nil){
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"UITableViewCellViewController" owner:nil options:nil]lastObject];
-    }
-    return cell;
-}
+
 
 
 

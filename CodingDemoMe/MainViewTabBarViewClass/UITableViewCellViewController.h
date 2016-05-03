@@ -9,5 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface UITableViewCellViewController : UITableViewCell
-+(instancetype)NewsCellCellWithTableView:(UITableView *)tableView;
 @end

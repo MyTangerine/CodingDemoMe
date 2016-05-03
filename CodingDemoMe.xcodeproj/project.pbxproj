@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		280109AC1CD6EA770027545D /* UITableViewCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 280109AA1CD6EA770027545D /* UITableViewCellViewController.m */; };
-		280109B11CD6FE0D0027545D /* UITableViewCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280109B01CD6FE0D0027545D /* UITableViewCellViewController.xib */; };
+		280109B11CD6FE0D0027545D /* UITableViewCellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 280109B01CD6FE0D0027545D /* UITableViewCellViewController.xib */; settings = {ASSET_TAGS = (2, ); }; };
+		280109B41CD75C8F0027545D /* NewsModelClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 280109B31CD75C8F0027545D /* NewsModelClass.m */; };
 		2850BD891CC714D8008A11BC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850BD881CC714D8008A11BC /* main.m */; };
 		2850BD8C1CC714D8008A11BC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2850BD8B1CC714D8008A11BC /* AppDelegate.m */; };
 		2850BD951CC714D8008A11BC /* CodingDemoMe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2850BD931CC714D8008A11BC /* CodingDemoMe.xcdatamodeld */; };
@@ -44,6 +45,8 @@
 		280109A91CD6EA770027545D /* UITableViewCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITableViewCellViewController.h; sourceTree = "<group>"; };
 		280109AA1CD6EA770027545D /* UITableViewCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITableViewCellViewController.m; sourceTree = "<group>"; };
 		280109B01CD6FE0D0027545D /* UITableViewCellViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UITableViewCellViewController.xib; sourceTree = "<group>"; };
+		280109B21CD75C8F0027545D /* NewsModelClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsModelClass.h; sourceTree = "<group>"; };
+		280109B31CD75C8F0027545D /* NewsModelClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsModelClass.m; sourceTree = "<group>"; };
 		2850BD841CC714D8008A11BC /* CodingDemoMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingDemoMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2850BD881CC714D8008A11BC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2850BD8A1CC714D8008A11BC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -187,6 +190,8 @@
 				280109A91CD6EA770027545D /* UITableViewCellViewController.h */,
 				280109AA1CD6EA770027545D /* UITableViewCellViewController.m */,
 				280109B01CD6FE0D0027545D /* UITableViewCellViewController.xib */,
+				280109B21CD75C8F0027545D /* NewsModelClass.h */,
+				280109B31CD75C8F0027545D /* NewsModelClass.m */,
 			);
 			name = MainViewTabBarViewClass;
 			path = CodingDemoMe/MainViewTabBarViewClass;
@@ -264,6 +269,9 @@
 		2850BD7C1CC714D8008A11BC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					2,
+				);
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = wolf;
 				TargetAttributes = {
@@ -338,6 +346,7 @@
 			files = (
 				28CFEA9B1CCDA443002B4289 /* MainNewsViewController.m in Sources */,
 				2850BDC01CC714FD008A11BC /* SignInViewController.m in Sources */,
+				280109B41CD75C8F0027545D /* NewsModelClass.m in Sources */,
 				280109AC1CD6EA770027545D /* UITableViewCellViewController.m in Sources */,
 				2850BD951CC714D8008A11BC /* CodingDemoMe.xcdatamodeld in Sources */,
 				2850BD8C1CC714D8008A11BC /* AppDelegate.m in Sources */,

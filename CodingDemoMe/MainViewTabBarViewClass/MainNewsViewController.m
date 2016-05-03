@@ -11,7 +11,7 @@
 #define NAVRect self.navigationController.navigationBar.frame
 CGFloat const writeButtonWidth = 33;
 CGFloat const writeButtonHeight = 32;
-@interface MainNewsViewController ()<UITableViewDataSource>
+@interface MainNewsViewController ()<UITableViewDataSource,UITableViewDelegate>
 @end
 
 @implementation MainNewsViewController
@@ -41,8 +41,8 @@ CGFloat const writeButtonHeight = 32;
     
     
     news_table_view.dataSource = self;
-    news_table_view.delegate = self;
     
+    news_table_view.delegate = self;
     
     [self.view addSubview:news_table_view];
 }
@@ -52,9 +52,18 @@ CGFloat const writeButtonHeight = 32;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *reuseId = @"reuseCellId";
+    UITableViewCellViewController *cell = [tableView dequeueReusableCellWithIdentifier:reuseId];
+    if (cell == nil){
+        cell = [[UITableViewCellViewController alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseId];
+    }
     
-    UITableViewCellViewController *cell = [[UITableViewCellViewController alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+    cell.imageView.image = [UIImage imageNamed:@"image_head"];
+    cell.textLabel.text = @"dasda";
 
+//    cell.imageView.image = [UIImage imageNamed:@"image_head"];
+//    cell.textLabel.text = @"sdasdasd";
+    
     
     return cell;
 }
