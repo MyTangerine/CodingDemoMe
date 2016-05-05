@@ -7,22 +7,36 @@
 //
 
 #import "MainNewsViewController.h"
-#import "UITableViewCellViewController.h"
+#import "NewsTableViewCell.h"
+#import "NewsModelClass.h"
 #define NAVRect self.navigationController.navigationBar.frame
 CGFloat const writeButtonWidth = 33;
 CGFloat const writeButtonHeight = 32;
 @interface MainNewsViewController ()<UITableViewDataSource,UITableViewDelegate>
+@property (weak,nonatomic)NSArray *newsModelClass;
 @end
 
 @implementation MainNewsViewController
+
+
+-(NSArray *)newsModelClass{
+    if (_newsModelClass == nil){
+        _newsModelClass = [NewsModelClass NewsModelClassList];
+    }
+    return _newsModelClass;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"新闻";
     [self initNavigationButton];
     [self tableViewShow];
-    
 }
+
+
+
+
 -(void)initNavigationButton{
     UIButton *test = [UIButton buttonWithType:UIButtonTypeCustom];
     test.frame = CGRectMake(0, 0, writeButtonWidth, writeButtonHeight);
@@ -34,37 +48,30 @@ CGFloat const writeButtonHeight = 32;
 }
 
 
+
+
 -(void)tableViewShow{
     
     NSLog(@"%@",NSStringFromCGRect(self.tabBarController.tabBar.frame));
     UITableView *news_table_view = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, 375, 618-64)style:UITableViewStylePlain];
-    
-    
     news_table_view.dataSource = self;
-    
     news_table_view.delegate = self;
-    
     [self.view addSubview:news_table_view];
+    news_table_view.rowHeight = 400;
+//    news_table_view.separatorStyle =UITableViewCellSeparatorStyleNone;
 }
+
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 20;
+    return self.newsModelClass.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *reuseId = @"reuseCellId";
-    UITableViewCellViewController *cell = [tableView dequeueReusableCellWithIdentifier:reuseId];
-    if (cell == nil){
-        cell = [[UITableViewCellViewController alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseId];
-    }
-    
-    cell.imageView.image = [UIImage imageNamed:@"image_head"];
-    cell.textLabel.text = @"dasda";
-
-//    cell.imageView.image = [UIImage imageNamed:@"image_head"];
-//    cell.textLabel.text = @"sdasdasd";
-    
-    
+    NewsTableViewCell *cell = [NewsTableViewCell newsTableViewCellWithTableView:tableView];
+    NewsModelClass *reuseCellId = self.newsModelClass[indexPath.row];
+    cell.modelClass = reuseCellId;
     return cell;
 }
 
