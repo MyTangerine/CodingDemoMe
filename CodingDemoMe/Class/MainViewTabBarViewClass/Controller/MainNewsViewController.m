@@ -53,11 +53,17 @@ CGFloat const writeButtonHeight = 32;
 -(void)tableViewShow{
     
     NSLog(@"%@",NSStringFromCGRect(self.tabBarController.tabBar.frame));
-    UITableView *news_table_view = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, 375, 618-64)style:UITableViewStylePlain];
+    
+    
+    
+    UITableView *news_table_view = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 375, 667)style:UITableViewStyleGrouped];
+    [self setAutomaticallyAdjustsScrollViewInsets:NO];
     news_table_view.dataSource = self;
     news_table_view.delegate = self;
     [self.view addSubview:news_table_view];
-    news_table_view.rowHeight = 400;
+    news_table_view.rowHeight = 180;
+    
+    
 //    news_table_view.separatorStyle =UITableViewCellSeparatorStyleNone;
 }
 
@@ -68,10 +74,15 @@ CGFloat const writeButtonHeight = 32;
     return self.newsModelClass.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+
     NewsTableViewCell *cell = [NewsTableViewCell newsTableViewCellWithTableView:tableView];
     NewsModelClass *reuseCellId = self.newsModelClass[indexPath.row];
+    
     cell.modelClass = reuseCellId;
+    
     return cell;
 }
 
