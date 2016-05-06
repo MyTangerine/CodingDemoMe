@@ -80,9 +80,7 @@ CGFloat const writeButtonHeight = 32;
 
     NewsTableViewCell *cell = [NewsTableViewCell newsTableViewCellWithTableView:tableView];
     NewsModelClass *reuseCellId = self.newsModelClass[indexPath.row];
-    
     cell.modelClass = reuseCellId;
-    
     return cell;
 }
 

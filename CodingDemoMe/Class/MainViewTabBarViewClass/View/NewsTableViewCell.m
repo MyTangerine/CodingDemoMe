@@ -44,7 +44,10 @@
     _modelClass = modelClass;
     self.image_view_cell.image = [UIImage imageNamed:modelClass.icon];
     self.profile_label_cell.text = modelClass.desc;
-    self.title_from_cell.text = modelClass.title_from;
+    NSString *str1 = modelClass.title_from;
+    
+    NSString *str2 = [[NSString alloc]initWithFormat:@"文章来源----%@",str1];
+    self.title_from_cell.text = str2;
     self.text_view_cell.text = modelClass.title;
     
     
