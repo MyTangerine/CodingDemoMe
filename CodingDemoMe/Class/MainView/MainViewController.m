@@ -36,7 +36,7 @@ CGFloat const btnHeight = 45;
     
     MainNewsViewController *main_news_view = [[MainNewsViewController alloc]init];
     main_news_view.tabBarItem.image = [UIImage imageNamed: @"image_news"];
-    main_news_view.tabBarItem.title =@"新闻";
+    main_news_view.tabBarItem.title =@"首页";
     
     
     OPViewController *main_op_view = [[OPViewController alloc]init];

@@ -9,6 +9,7 @@
 #import "MainNewsViewController.h"
 #import "NewsTableViewCell.h"
 #import "NewsModelClass.h"
+#import "MJRefresh.h"
 #define NAVRect self.navigationController.navigationBar.frame
 CGFloat const writeButtonWidth = 33;
 CGFloat const writeButtonHeight = 32;
@@ -56,17 +57,33 @@ CGFloat const writeButtonHeight = 32;
     
     
     
-    UITableView *news_table_view = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 375, 667)style:UITableViewStyleGrouped];
+    UITableView *news_table_view = [[UITableView alloc]initWithFrame:CGRectMake(0, -25, 375, 700)style:UITableViewStyleGrouped];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
     news_table_view.dataSource = self;
     news_table_view.delegate = self;
     [self.view addSubview:news_table_view];
     news_table_view.rowHeight = 180;
     
+    news_table_view.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+    }];
     
+    news_table_view.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(beginMJRefresh)];
+    [news_table_view.mj_header beginRefreshing];
+    
+    
+    
+    news_table_view.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        
+    }];
+    
+    news_table_view.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(beginMJRefresh)];
 //    news_table_view.separatorStyle =UITableViewCellSeparatorStyleNone;
 }
 
+-(void)beginMJRefresh{
+    NSLog(@"开始刷新了");
+}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
