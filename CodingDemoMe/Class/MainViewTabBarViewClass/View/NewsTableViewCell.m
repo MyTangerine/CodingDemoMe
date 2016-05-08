@@ -29,7 +29,14 @@
 
 
 +(instancetype)newsTableViewCellWithTableView:(UITableView *)tableView{
+    //设置静态可重用 id
     static NSString *reuseId = @"reuseCellId";
+    /*
+     cell的可重用操作
+     定义一个可重用的cell队列池
+     如果cell == nil
+     就从队列池子里面拿出一个cell
+     */
     
     NewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseId];
     
@@ -39,6 +46,7 @@
     return cell;
 }
 
+//数据模型进行控件的赋值
 
 -(void)setModelClass:(NewsModelClass *)modelClass{
     _modelClass = modelClass;
@@ -52,7 +60,7 @@
     
     
     
-    
+//  设置了头像的圆形效果
     CGRect image_view_bounds = self.image_view_cell.bounds;
     CGFloat x_path = image_view_bounds.origin.x + (image_view_bounds.size.width/2);
     CGFloat y_path = image_view_bounds.origin.y+(image_view_bounds.size.height/2);

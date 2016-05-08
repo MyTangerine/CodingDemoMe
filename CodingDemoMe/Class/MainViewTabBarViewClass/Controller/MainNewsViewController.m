@@ -49,7 +49,7 @@ CGFloat const writeButtonHeight = 32;
 }
 
 
-
+// uitableview 控制类方法
 
 -(void)tableViewShow{
     
@@ -90,6 +90,23 @@ CGFloat const writeButtonHeight = 32;
     
     return self.newsModelClass.count;
 }
+
+//创建了一个获取json方法，应放入工具类
+
+
+-(void)getNewsJsonData{
+    int num = 1;
+    NSString *str = [[NSString alloc]initWithFormat:@"http://119.29.58.43/api/getSfBlog/getPage=%d",num];
+    NSURL *url = [[NSURL alloc]initWithString:str];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:1 timeoutInterval:15.0f];
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSArray *data_array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    
+    NSLog(@"%@",[data_array[0] objectForKey:@"author"]);
+    
+}
+
+
 
 
 

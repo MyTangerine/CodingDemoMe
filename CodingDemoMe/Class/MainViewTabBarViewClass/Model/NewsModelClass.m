@@ -9,6 +9,10 @@
 #import "NewsModelClass.h"
 
 @implementation NewsModelClass
+
+//初始化字典，将数组中字典的值取出来赋给新的字典。
+
+
 -(instancetype)initWithDic:(NSDictionary *)dic{
     
     if (self =[super init]){
@@ -17,9 +21,14 @@
     }
     return self;
 }
+
+
+//创建一个新的字典
 +(instancetype)NewsModelClassWithDic:(NSDictionary *)dic{
    return [[self alloc]initWithDic:dic];
 }
+
+
 
 +(NSArray *)NewsModelClassList{
     NSString *path = [[NSBundle mainBundle]pathForResource:@"News" ofType:@"plist"];
