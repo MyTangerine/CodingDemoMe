@@ -7,7 +7,7 @@
 //
 
 #import "NewsTableViewCell.h"
-
+#import "News+CoreDataProperties.h"
 @interface NewsTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *image_view_cell;
 @property (weak, nonatomic) IBOutlet UILabel *title_from_cell;
@@ -16,16 +16,7 @@
 @end
 
 @implementation NewsTableViewCell
-//-(instancetype)init{
-//    if (self = [super init]){
-//    UIBezierPath *head_path = [[UIBezierPath alloc]init];
-//    [head_path addArcWithCenter:CGPointMake(33, 33) radius:33 startAngle:0 endAngle:2*M_PI clockwise:YES];
-//    CAShapeLayer *head_layer = [CAShapeLayer layer];
-//    head_layer.path  = head_path.CGPath;
-//    self.head_image_cell.layer.mask = head_layer;
-//    }
-//    return self;
-//}
+
 
 
 +(instancetype)newsTableViewCellWithTableView:(UITableView *)tableView{
@@ -46,11 +37,13 @@
     return cell;
 }
 
-//数据模型进行控件的赋值
+//数据模型进行控件赋值
 
 -(void)setModelClass:(NewsModelClass *)modelClass{
-    _modelClass = modelClass;
+//    _modelClass = modelClass;
     self.image_view_cell.image = [UIImage imageNamed:modelClass.icon];
+    
+    
     self.profile_label_cell.text = modelClass.desc;
     NSString *str1 = modelClass.title_from;
     

@@ -31,7 +31,7 @@
 
 
 +(NSArray *)NewsModelClassList{
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"News" ofType:@"plist"];
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"CodingDemoMe" ofType:@"sqlite"];
     NSArray *news_array = [NSArray arrayWithContentsOfFile:path];
     
     NSMutableArray *news_m_array = [NSMutableArray array];

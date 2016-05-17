@@ -9,5 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface MainNewsViewController : UIViewController
+//@property (readonly ,nonatomic ,strong)NSManagedObjectContext *context;
+//@property (readonly ,nonatomic ,strong)NSManagedObjectModel *model;
+//@property (readonly ,nonatomic ,strong)NSPersistentStoreCoordinator *persistenStoreCoodinator;
+
+//-(void)saveContext;
+//-(NSURL *)applicationCacheDirectory;
+
+//-(void)insertCoreData:(NSMutableArray*)dataArray;
+
+//-(void)updataData:(NSString *)newsId withLook:(NSString *)isLook;
 
 @end

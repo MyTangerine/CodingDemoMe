@@ -10,11 +10,15 @@
 #import "NewsTableViewCell.h"
 #import "NewsModelClass.h"
 #import "MJRefresh.h"
+#import <CoreData/CoreData.h>
+#import "News+CoreDataProperties.h"
 #define NAVRect self.navigationController.navigationBar.frame
 CGFloat const writeButtonWidth = 33;
 CGFloat const writeButtonHeight = 32;
 @interface MainNewsViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak,nonatomic)NSArray *newsModelClass;
+@property (nonatomic,strong)NSManagedObjectContext *context;
+
 @end
 
 @implementation MainNewsViewController
@@ -31,8 +35,12 @@ CGFloat const writeButtonHeight = 32;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"新闻";
+    [self setUpContext];
+    [self getNewsJsonData];
+    
     [self initNavigationButton];
     [self tableViewShow];
+    
 }
 
 
@@ -49,12 +57,9 @@ CGFloat const writeButtonHeight = 32;
 }
 
 
-// uitableview 控制类方法
+#pragma -mark UITableView 控制
 
 -(void)tableViewShow{
-    
-    NSLog(@"%@",NSStringFromCGRect(self.tabBarController.tabBar.frame));
-    
     
     
     UITableView *news_table_view = [[UITableView alloc]initWithFrame:CGRectMake(0, -25, 375, 700)style:UITableViewStyleGrouped];
@@ -85,24 +90,42 @@ CGFloat const writeButtonHeight = 32;
     NSLog(@"开始刷新了");
 }
 
-
+#pragma -mark 返回cell行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return self.newsModelClass.count;
 }
 
-//创建了一个获取json方法，应放入工具类
+#pragma -mark 创建一个数据库的上下文
+-(void)setUpContext{
+    NSManagedObjectContext *context = [[NSManagedObjectContext alloc]init];
+    NSManagedObjectModel *model = [NSManagedObjectModel mergedModelFromBundles:nil];
+    NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc]initWithManagedObjectModel:model];
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+    NSURL *dataUrl = [NSURL fileURLWithPath:[path stringByAppendingPathComponent:@"CodingDemoMe.sqlite"]];
+    NSLog(@"%@",dataUrl);
+    NSError *error = nil;
+    [psc addPersistentStoreWithType:NSSQLiteStoreType
+                      configuration:nil
+                                URL:dataUrl
+                            options:nil
+                              error:&error];
+    [context setPersistentStoreCoordinator:psc];
+    self.context = context;
+}
 
 
+#pragma -mark 创建了一个获取json方法
 -(void)getNewsJsonData{
+
+    
     int num = 1;
+    
     NSString *str = [[NSString alloc]initWithFormat:@"http://119.29.58.43/api/getSfBlog/getPage=%d",num];
     NSURL *url = [[NSURL alloc]initWithString:str];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:1 timeoutInterval:15.0f];
     NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSArray *data_array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-    
-    NSLog(@"%@",[data_array[0] objectForKey:@"author"]);
+    NSArray *dicArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     
 }
 
@@ -113,7 +136,9 @@ CGFloat const writeButtonHeight = 32;
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     NewsTableViewCell *cell = [NewsTableViewCell newsTableViewCellWithTableView:tableView];
+    //从字典里面获取相应的索引值
     NewsModelClass *reuseCellId = self.newsModelClass[indexPath.row];
+    //获取到的值赋给cell的model
     cell.modelClass = reuseCellId;
     return cell;
 }
